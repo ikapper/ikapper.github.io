@@ -1,0 +1,1532 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>検討中</title>
+  <style type="text/css">
+    * {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    div.table-frame {
+      background-color: darkgray;
+      /* display: block; */
+      width: fit-content;
+      margin: 0;
+      padding: 0;
+    }
+
+    div.d0-row {
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+
+    div.d0-block {
+      display: inline-block;
+      margin-inline-end: 0;
+      margin-inline-start: 0;
+      margin-top: 0.1em;
+      margin-bottom: 0.1em;
+      margin-left: 0.1em;
+      margin-right: 0.1em;
+    }
+
+    div.row {
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+
+    div.block {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      margin-inline-end: 0.1em;
+      margin-inline-start: 0.1em;
+      margin-top: 0.1em;
+      margin-bottom: 0.1em;
+    }
+
+    div.childrow {
+      background-color: bisque;
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+
+    div.child {
+      color: dimgray;
+      text-align: center;
+      display: inline-block;
+      width: 0.9em;
+      height: 1em;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="table-frame">
+    <div class="d0-row">
+      <div class="d0-block">
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d0-block">
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d0-block">
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d0-row">
+      <div class="d0-block">
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d0-block">
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d0-block">
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d0-row">
+      <div class="d0-block">
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d0-block">
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d0-block">
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="childrow">
+              <div class="child">1</div>
+              <div class="child">2</div>
+              <div class="child">3</div>
+            </div>
+            <div class="childrow">
+              <div class="child">4</div>
+              <div class="child">5</div>
+              <div class="child">6</div>
+            </div>
+            <div class="childrow">
+              <div class="child">7</div>
+              <div class="child">8</div>
+              <div class="child">9</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
