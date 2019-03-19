@@ -3,6 +3,8 @@ layout: default
 title: Top
 ---
 
-# ikapper io
+# 物置
 
-A mat for *Sudoku* [here](/dai.html)
+主に練習用ページです。
+
+* [数独用シート](/dai.html) A mat for *Sudoku* 
