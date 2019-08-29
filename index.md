@@ -8,3 +8,4 @@ title: Top
 主に練習用ページです。
 
 * [数独用シート](/dai.html) A mat for *Sudoku* 
+* [GBFinderの使い方](/gbfinder/howtouse.html) Twitter上の特定ワード検索ツール
