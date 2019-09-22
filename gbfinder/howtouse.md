@@ -5,7 +5,19 @@ title: GBFinderの使い方
 
 # GBFinderの使い方
 
-解説は、画像の中の番号ごとに画像の下部に示します。
+## 注意
+
+使用は自己責任でお願いします。
+
+## ダウンロードについて
+
+ダウンロードはこちらのGoogleドライブのリンクから行えます。
+
+* [gbfinder - Google Drive](https://drive.google.com/drive/folders/1YwuV6jWlZU9plWkLeGJUsA3COytoDoBT?usp=sharing)
+    * macOS版: gbfinder-darwin-x64.zip
+    * linux版: gbfinder-linux-x64.zip
+    * windows 32bit版: gbfinder-win32-ia32.zip
+    * windows 64bit版: gbfinder-win32-x64.zip
 
 ## Twitter認証について
 
@@ -15,10 +27,9 @@ Twitterのツイートを検索（収集）するためには、あなたが普�
 
 ![初期状態](res/gbfinder_0_1.png "初期状態")
 
-1. この`ブラウザを開く`ボタンを押すと、普段お使いのブラウザが開き、ツイッターのログイン画面もしくは当アプリを許可するかどうかの画面(`画面A`)が表示されます。
-ログイン画面の場合は、ログインすることで、`画面A`が表示されます。
+1. この`ブラウザを開く`ボタンを押すと、普段お使いのブラウザが開き、ツイッターのログイン画面もしくは当アプリを許可するかどうかの表示が現れます。以下のように表示されます。
+ログイン画面の場合は、ログインすることで、表示されます。
 
-`画面A`は、次のような表示です。
 
 ![Twitter認証画面](res/gbfinder_tw1.png "認証画面")
 
@@ -57,22 +68,22 @@ PINコード入力箇所は、ブラウザを開くボタンの下に現れま�
 
 ## 新規マルチバトルの追加について
 
-日本語名が必須項目となっています。
+日本語名が必須項目となっています。また、日本語名の箇所に`English Name`を入力しても構いません。
 
 ![新規追加](res/gbfinder_newraid.png "新規追加")
 
 `Save`ボタンを押すことで、リストの最上部に保存されます。
-`×`ボタンで中止することができます。
+`×`ボタンで追加を中止することができます。
 
 
 ## PC内で使用する領域について
 
 当アプリは、マルチバトルのリストなどをPC内部に保存するため、PCのストレージの一部を利用します。
 
-使用するフォルダは、メニューの`File -> Open settings folder`を選択することで表示できます。
+使用するフォルダは、メニューの`File -> 設定ファイル保存用のフォルダを開く`をクリックすることで表示できます。
 
 
 ## 使用している素材の出典
 
 * 効果音: https://taira-komori.jpn.org/freesound.html
-* クリップなどのアイコン: https://cssicon.space/#/
+* クリップと時計のアイコン: https://cssicon.space/#/
