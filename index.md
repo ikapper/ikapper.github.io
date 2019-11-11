@@ -10,3 +10,4 @@ title: Top
 
 * [数独用シート](/dai.html) 使う必要なし
 * [GBFinderのDLと使い方](/gbfinder/howtouse.html) グラブル向けTwitter上の特定ワード検索ツール
+* [shellやterminal.appのショートカットキーのチートシート](/cheatsheets/shell_terminal.html) よく忘れるやつ

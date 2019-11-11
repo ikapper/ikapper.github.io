@@ -6,3 +6,11 @@ h2 {
 p {
     margin: .5rem 0;
 }
+
+footer {
+    margin-bottom: 0!important;
+}
+
+table code {
+    font-size: 1.2rem;
+}
