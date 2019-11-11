@@ -1,0 +1,6 @@
+markdown: kramdown
+exclude:
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - .bundle
