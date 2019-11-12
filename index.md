@@ -8,6 +8,7 @@ title: Top
 適当なものを置いています。
 
 
-* [数独用シート](/dai.html) 使う必要なし
-* [GBFinderのDLと使い方](/gbfinder/howtouse.html) グラブル向けTwitter上の特定ワード検索ツール
-* [shellやterminal.appのショートカットキーのチートシート](/cheatsheets/shell_terminal.html) よく忘れるやつ
+| [数独用シート](/dai.html)                      | 使う必要なし |
+|[GBFinderのDLと使い方](/gbfinder/howtouse.html) | グラブル向けTwitter上の特定ワード検索ツール |
+| [shellやterminal.appのチートシート](/cheatsheets/shell_terminal.html) | ショートカットなど。よく忘れるやつ |
+{: .table}
