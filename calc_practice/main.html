@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <style>
+    .top>h1 {
+      text-align: center;
+    }
+
+    .expression {
+      font-size: 3rem;
+      text-align: right;
+    }
+
+    .equals {
+      font-size: 3rem;
+      text-align: center;
+    }
+
+    .answer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.5rem;
+    }
+
+    .el-row {
+      margin-bottom: 4px;
+    }
+
+    .el-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .el-col {
+      position: relative;
+      border-radius: 4px;
+    }
+
+    .font-bold {
+      font-weight: bold;
+    }
+
+    .bg-purple-dark {
+      background: #99a9bf;
+    }
+
+    .bg-purple {
+      background: #d3dce6;
+    }
+
+    .bg-purple-light {
+      background: #e5e9f2;
+    }
+
+    .grid-content {
+      position: relative;
+      border-radius: 4px;
+      min-height: 72px;
+    }
+
+    .grid-content>span {
+      margin: auto;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .row-bg {
+      padding: 10px 0;
+      background-color: #f9fafc;
+    }
+
+    .time {
+      text-align: center;
+    }
+
+    .small {
+      font-size: .8em;
+      color: grey;
+    }
+
+    .fade-enter-active,
+    .fade-leave-active {
+      transition: opacity .5s;
+    }
+
+    .fade-enter,
+    .fade-leave-to {
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+
+    <div v-show="scene=='startpage'" class="top">
+      <h1>暗算タイムアタック</h1>
+      <el-row type="flex" class="row-bg" justify="center">
+        <el-button @click="startCountDown" type="primary" round>スタート！</el-button>
+      </el-row>
+    </div>
+
+    <transition name="countdown">
+      <div v-show="scene=='countdownpage'">
+        <el-row type="flex" class="row-bg" justify="center">
+          <h1>{{ countdownSec }}</h1>
+        </el-row>
+      </div>
+    </transition>
+
+    <transition name="fade">
+      <div v-show="scene=='quizpage'">
+        <el-row type="flex" justify="center">
+          <el-col :span="10">
+            <div class="expression font-bold">{{ currentQuestion.question }}</div>
+          </el-col>
+          <el-col :span="2">
+            <div class="equals font-bold">=</div>
+          </el-col>
+          <el-col :span="10">
+            <el-input class="answer" placeholder="答えを入力" v-model="currentQuestion.answer"></el-input>
+          </el-col>
+        </el-row>
+        <el-divider></el-divider>
+
+        <el-row type="flex" class="row-bg" justify="space-around">
+          <el-col :span="6">
+            <div @click="inputNumber(1)" class="grid-content bg-purple"><span>1</span></div>
+          </el-col>
+          <el-col :span="6">
+            <div @click="inputNumber(2)" class="grid-content bg-purple-light"><span>2</span></div>
+          </el-col>
+          <el-col :span="6">
+            <div @click="inputNumber(3)" class="grid-content bg-purple"><span>3</span></div>
+          </el-col>
+        </el-row>
+        <el-row type="flex" class="row-bg" justify="space-around">
+          <el-col :span="6">
+            <div @click="inputNumber(4)" class="grid-content bg-purple"><span>4</span></div>
+          </el-col>
+          <el-col :span="6">
+            <div @click="inputNumber(5)" class="grid-content bg-purple-light"><span>5</span></div>
+          </el-col>
+          <el-col :span="6">
+            <div @click="inputNumber(6)" class="grid-content bg-purple"><span>6</span></div>
+          </el-col>
+        </el-row>
+        <el-row type="flex" class="row-bg" justify="space-around">
+          <el-col :span="6">
+            <div @click="inputNumber(7)" class="grid-content bg-purple"><span>7</span></div>
+          </el-col>
+          <el-col :span="6">
+            <div @click="inputNumber(8)" class="grid-content bg-purple-light"><span>8</span></div>
+          </el-col>
+          <el-col :span="6">
+            <div @click="inputNumber(9)" class="grid-content bg-purple"><span>9</span></div>
+          </el-col>
+        </el-row>
+        <el-row type="flex" class="row-bg" justify="space-around">
+          <el-col :span="6">
+            <div @click="clearInput" class="grid-content bg-purple"><span>クリア</span></div>
+          </el-col>
+          <el-col :span=" 6">
+            <div @click="inputNumber(0)" class="grid-content bg-purple-light"><span>0</span></div>
+          </el-col>
+          <el-col :span="6">
+            <div @click="nextQ" class="grid-content bg-purple-dark enter"><span>次へ</span></div>
+          </el-col>
+        </el-row>
+        <el-divider></el-divider>
+        <div class="time small">{{ currentTimeStr }}</div>
+      </div>
+    </transition>
+
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    /**
+     * Return a number in [min, max)
+     * 
+    */
+    function getRandomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min
+    }
+
+    const COUNTDOWN_DEFAULT = 3  // sec
+    const CURRENT_TIME_INTERVAL = 10  // ms
+
+    class ArimeticQuestion {
+      constructor() {
+        this.operators = ["+", "-", "x"]
+        this.question = this.getQuestion()
+        this.answer = ""
+      }
+
+      get trueAnswer() {
+        let a = this.question.replace("x", "*")
+        return Function(`"use strict"; return (${a})`)()
+      }
+
+      get isCorrectAnswer() {
+        return this.trueAnswer === Number(this.answer)
+      }
+
+      getQuestion(/*mode*/) {
+        let lh = getRandomNumber(1, 20)
+        let rh = getRandomNumber(1, 20)
+        let op = this.getRandomOperator()
+        if (op === "-" && rh > lh) {
+          let t = lh
+          lh = rh
+          rh = t
+        }
+        return `${lh} ${op} ${rh}`
+      }
+
+      getRandomOperator() {
+        return this.operators[getRandomNumber(0, this.operators.length)]
+      }
+    }
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        scene: "startpage",
+        countdownSec: COUNTDOWN_DEFAULT,
+        countDownTimerid: 0,
+        currentQuestion: new ArimeticQuestion(),
+        currentTime: 0,  // ms
+        currentTimeTimerid: 0,
+        answeredQuestions: [],
+      },
+      computed: {
+        currentTimeStr: function () {
+          let ms = Math.floor(this.currentTime % 1000 / 10)  // 上位2桁
+          ms = ms < 10 ? '0' + ms : ms
+          let sec = Math.floor(this.currentTime / 1000) % 60
+          sec = sec < 10 ? '0' + sec : sec
+          let min = Math.floor(this.currentTime / 60000)
+          min = min < 10 ? '0' + min : min
+          return `${min}:${sec}:${ms}`
+        }
+      },
+      methods: {
+        inputNumber: function (num) {
+          this.currentQuestion.answer += String(num)
+        },
+        startCountDown: function () {
+          this.countdownSec = COUNTDOWN_DEFAULT
+          this.scene = "countdownpage"
+          // タイマーによって、カウントを開始する。
+          let thisapp = this
+          this.countDownTimerid = setInterval(() => {
+            thisapp._updateCountDown()
+          }, 1000);
+        },
+        _updateCountDown: function () {
+          if (this.countdownSec === 1) {
+            clearInterval(this.countDownTimerid)
+            this.startQ()
+          } else {
+            this.countdownSec--
+          }
+        },
+        startQ: function () {
+          this.scene = "quizpage"
+          this.currentQuestion = new ArimeticQuestion()
+          let thisapp = this
+          this.currentTimeTimerid = setInterval(() => {
+            thisapp.currentTime += CURRENT_TIME_INTERVAL
+          }, CURRENT_TIME_INTERVAL)
+        },
+        nextQ: function () {
+          this.answeredQuestions.push(this.currentQuestion)
+          this.currentQuestion = new ArimeticQuestion()
+        },
+        clearInput: function () {
+          this.currentQuestion.answer = ""
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
