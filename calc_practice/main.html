@@ -59,6 +59,15 @@
       position: relative;
       border-radius: 4px;
       min-height: 72px;
+      transition: background-color 0.2s;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    .grid-content:active {
+      background-color: #88a0ab;
     }
 
     .grid-content>span {
@@ -75,7 +84,7 @@
       background-color: #f9fafc;
     }
 
-    .time {
+    .text-center {
       text-align: center;
     }
 
@@ -86,12 +95,13 @@
 
     .fade-enter-active,
     .fade-leave-active {
-      transition: opacity .5s;
+      transition: opacity .5s, height .5s;
     }
 
     .fade-enter,
     .fade-leave-to {
       opacity: 0;
+      height: 0;
     }
   </style>
 </head>
@@ -117,6 +127,12 @@
     <transition name="fade">
       <div v-show="scene=='quizpage'">
         <el-row type="flex" justify="center">
+          <div class="progress">{{ currentQNumberForDisplay }} / {{ maxQNumber }}</div>
+        </el-row>
+
+        <el-divider></el-divider>
+
+        <el-row type="flex" justify="center">
           <el-col :span="10">
             <div class="expression font-bold">{{ currentQuestion.question }}</div>
           </el-col>
@@ -127,54 +143,78 @@
             <el-input class="answer" placeholder="答えを入力" v-model="currentQuestion.answer"></el-input>
           </el-col>
         </el-row>
+
         <el-divider></el-divider>
 
         <el-row type="flex" class="row-bg" justify="space-around">
           <el-col :span="6">
-            <div @click="inputNumber(1)" class="grid-content bg-purple"><span>1</span></div>
+            <div @click.stop="inputNumber(1)" class="grid-content bg-purple"><span>1</span></div>
           </el-col>
           <el-col :span="6">
-            <div @click="inputNumber(2)" class="grid-content bg-purple-light"><span>2</span></div>
+            <div @click.stop="inputNumber(2)" class="grid-content bg-purple-light"><span>2</span></div>
           </el-col>
           <el-col :span="6">
-            <div @click="inputNumber(3)" class="grid-content bg-purple"><span>3</span></div>
-          </el-col>
-        </el-row>
-        <el-row type="flex" class="row-bg" justify="space-around">
-          <el-col :span="6">
-            <div @click="inputNumber(4)" class="grid-content bg-purple"><span>4</span></div>
-          </el-col>
-          <el-col :span="6">
-            <div @click="inputNumber(5)" class="grid-content bg-purple-light"><span>5</span></div>
-          </el-col>
-          <el-col :span="6">
-            <div @click="inputNumber(6)" class="grid-content bg-purple"><span>6</span></div>
+            <div @click.stop="inputNumber(3)" class="grid-content bg-purple"><span>3</span></div>
           </el-col>
         </el-row>
         <el-row type="flex" class="row-bg" justify="space-around">
           <el-col :span="6">
-            <div @click="inputNumber(7)" class="grid-content bg-purple"><span>7</span></div>
+            <div @click.stop="inputNumber(4)" class="grid-content bg-purple"><span>4</span></div>
           </el-col>
           <el-col :span="6">
-            <div @click="inputNumber(8)" class="grid-content bg-purple-light"><span>8</span></div>
+            <div @click.stop="inputNumber(5)" class="grid-content bg-purple-light"><span>5</span></div>
           </el-col>
           <el-col :span="6">
-            <div @click="inputNumber(9)" class="grid-content bg-purple"><span>9</span></div>
+            <div @click.stop="inputNumber(6)" class="grid-content bg-purple"><span>6</span></div>
           </el-col>
         </el-row>
         <el-row type="flex" class="row-bg" justify="space-around">
           <el-col :span="6">
-            <div @click="clearInput" class="grid-content bg-purple"><span>クリア</span></div>
+            <div @click.stop="inputNumber(7)" class="grid-content bg-purple"><span>7</span></div>
+          </el-col>
+          <el-col :span="6">
+            <div @click.stop="inputNumber(8)" class="grid-content bg-purple-light"><span>8</span></div>
+          </el-col>
+          <el-col :span="6">
+            <div @click.stop="inputNumber(9)" class="grid-content bg-purple"><span>9</span></div>
+          </el-col>
+        </el-row>
+        <el-row type="flex" class="row-bg" justify="space-around">
+          <el-col :span="6">
+            <div @click.stop="clearInput" class="grid-content bg-purple"><span>クリア</span></div>
           </el-col>
           <el-col :span=" 6">
-            <div @click="inputNumber(0)" class="grid-content bg-purple-light"><span>0</span></div>
+            <div @click.stop="inputNumber(0)" class="grid-content bg-purple-light"><span>0</span></div>
           </el-col>
           <el-col :span="6">
-            <div @click="nextQ" class="grid-content bg-purple-dark enter"><span>次へ</span></div>
+            <div @click.stop="nextQ" class="grid-content bg-purple-dark enter"><span>{{ nextBtnText }}</span></div>
           </el-col>
         </el-row>
         <el-divider></el-divider>
-        <div class="time small">{{ currentTimeStr }}</div>
+        <div class="text-center small">{{ currentTimeStr }}</div>
+      </div>
+    </transition>
+
+    <transition name="fade">
+      <div v-show="scene=='resultpage'">
+        <h2>採点！</h2>
+        <p>正解は、{{ numCorrectAnswers }}問でした！</p>
+        <p>かかった時間は、{{ currentTimeStrJp }}です。</p>
+
+        <el-row type="flex" class="row-bg" justify="center">
+          <el-button @click="backHome" type="primary" round>もう一度やる！</el-button>
+        </el-row>
+
+        <el-table :data="resultTable" stripe empty-text="No Data" style="width: 100%">
+          <el-table-column prop="expression" label="問題" width="180">
+          </el-table-column>
+          <el-table-column prop="answer" label="あなたの解答" width="180">
+          </el-table-column>
+          <el-table-column prop="ok" label="正否">
+          </el-table-column>
+          <el-table-column prop="trueAnswer" label="正解">
+          </el-table-column>
+        </el-table>
       </div>
     </transition>
 
@@ -197,13 +237,13 @@
 
     class ArimeticQuestion {
       constructor() {
-        this.operators = ["+", "-", "x"]
+        this.operators = ["+", "-", "×"]
         this.question = this.getQuestion()
         this.answer = ""
       }
 
       get trueAnswer() {
-        let a = this.question.replace("x", "*")
+        let a = this.question.replace("×", "*")
         return Function(`"use strict"; return (${a})`)()
       }
 
@@ -238,6 +278,7 @@
         currentTime: 0,  // ms
         currentTimeTimerid: 0,
         answeredQuestions: [],
+        maxQNumber: 10,
       },
       computed: {
         currentTimeStr: function () {
@@ -247,7 +288,49 @@
           sec = sec < 10 ? '0' + sec : sec
           let min = Math.floor(this.currentTime / 60000)
           min = min < 10 ? '0' + min : min
-          return `${min}:${sec}:${ms}`
+          return `${min}:${sec}.${ms}`
+        },
+        currentTimeStrJp: function () {
+          let ms = Math.floor(this.currentTime % 1000 / 10)  // 上位2桁
+          ms = ms < 10 ? '0' + ms : ms
+          let sec = Math.floor(this.currentTime / 1000) % 60
+          sec = sec < 10 ? '0' + sec : sec
+          let min = Math.floor(this.currentTime / 60000)
+          min = min < 10 ? '0' + min : min
+          return `${min}分${sec}秒${ms}`
+        },
+        currentQNumber: function () {
+          return this.answeredQuestions.length + 1
+        },
+        currentQNumberForDisplay: function () {
+          const cnt = this.currentQNumber
+          return cnt > this.maxQNumber ? this.maxQNumber : cnt
+        },
+        isNextQLast: function () {
+          return this.currentQNumber >= this.maxQNumber
+        },
+        isLastQ: function () {
+          return this.currentQNumber - 1 >= this.maxQNumber
+        },
+        nextBtnText: function () {
+          if (this.isNextQLast) {
+            return "終わり！"
+          } else {
+            return "次へ"
+          }
+        },
+        numCorrectAnswers: function () {
+          return this.answeredQuestions.filter(q => q.isCorrectAnswer).length
+        },
+        resultTable: function () {
+          return this.answeredQuestions.map(q => {
+            return {
+              expression: q.question,
+              answer: q.answer,
+              ok: q.isCorrectAnswer ? "⭕️" : "❌",
+              trueAnswer: q.trueAnswer
+            }
+          })
         }
       },
       methods: {
@@ -281,10 +364,20 @@
         },
         nextQ: function () {
           this.answeredQuestions.push(this.currentQuestion)
-          this.currentQuestion = new ArimeticQuestion()
+          if (this.isLastQ) {
+            clearInterval(this.currentTimeTimerid)
+            this.scene = "resultpage"
+          } else {
+            this.currentQuestion = new ArimeticQuestion()
+          }
         },
         clearInput: function () {
           this.currentQuestion.answer = ""
+        },
+        backHome: function () {
+          this.scene = "startpage"
+          this.currentTime = 0
+          this.answeredQuestions = []
         }
       }
     })
