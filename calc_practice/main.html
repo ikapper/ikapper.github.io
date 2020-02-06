@@ -234,9 +234,13 @@
 
     const COUNTDOWN_DEFAULT = 3  // sec
     const CURRENT_TIME_INTERVAL = 10  // ms
+    const LEVEL_EASY = "カンタン"
+    const LEVEL_NORMAL = "ふつう"
+    const LEVEL_HARD = "難しい"
 
     class ArimeticQuestion {
-      constructor() {
+      constructor(level) {
+        this.level = level
         this.operators = ["+", "-", "×"]
         this.question = this.getQuestion()
         this.answer = ""
@@ -251,10 +255,18 @@
         return this.trueAnswer === Number(this.answer)
       }
 
-      getQuestion(/*mode*/) {
-        let lh = getRandomNumber(1, 20)
-        let rh = getRandomNumber(1, 20)
+      getQuestion() {
         let op = this.getRandomOperator()
+
+        let lh, rh
+        if (op === "+" || op === "-") {
+          lh = this.genNumberAS()
+          rh = this.genNumberAS()
+        } else {
+          // mul op
+          lh = this.genNumberM()
+          rh = this.genNumberM()
+        }
         if (op === "-" && rh > lh) {
           let t = lh
           lh = rh
@@ -266,12 +278,70 @@
       getRandomOperator() {
         return this.operators[getRandomNumber(0, this.operators.length)]
       }
+
+      genNumberAS() {
+        // generate a number for Add and Sub
+        let digit
+        switch (this.level) {
+          case LEVEL_EASY:
+            digit = getRandomNumber(1, 11) < 5 ? 1 : 2
+            if (digit === 1) {
+              return getRandomNumber(1, 10)
+            } else {
+              return getRandomNumber(10, 20)
+            }
+            break
+          case LEVEL_NORMAL:
+            digit = getRandomNumber(1, 11) < 3 ? 1 : 2
+            if (digit === 1) {
+              return getRandomNumber(1, 10)
+            } else {
+              return getRandomNumber(10, 99)
+            }
+            break
+          case LEVEL_HARD:
+            digit = getRandomNumber(1, 11) < 6 ? 2 : 3
+            if (digit === 2) {
+              return getRandomNumber(10, 100)
+            } else {
+              return getRandomNumber(100, 1000)
+            }
+            break
+        }
+      }
+
+      genNumberM() {
+        //generate a number for mul
+        // TODO: levelごとに生成範囲を指定して返す
+        let digit
+        switch (this.level) {
+          case LEVEL_EASY:
+            return getRandomNumber(1, 10)
+          case LEVEL_NORMAL:
+            digit = getRandomNumber(1, 11) < 4 ? 1 : 2
+            if (digit === 1) {
+              return getRandomNumber(1, 10)
+            } else {
+              return getRandomNumber(10, 19)
+            }
+            break
+          case LEVEL_HARD:
+            digit = getRandomNumber(1, 11) < 3 ? 1 : 2
+            if (digit === 1) {
+              return getRandomNumber(2, 10)
+            } else {
+              return getRandomNumber(11, 100)
+            }
+            break
+        }
+      }
     }
 
     var app = new Vue({
       el: '#app',
       data: {
         scene: "startpage",
+        level: LEVEL_NORMAL,
         countdownSec: COUNTDOWN_DEFAULT,
         countDownTimerid: 0,
         currentQuestion: new ArimeticQuestion(),
@@ -356,7 +426,7 @@
         },
         startQ: function () {
           this.scene = "quizpage"
-          this.currentQuestion = new ArimeticQuestion()
+          this.currentQuestion = new ArimeticQuestion(this.level)
           let thisapp = this
           this.currentTimeTimerid = setInterval(() => {
             thisapp.currentTime += CURRENT_TIME_INTERVAL
@@ -368,7 +438,7 @@
             clearInterval(this.currentTimeTimerid)
             this.scene = "resultpage"
           } else {
-            this.currentQuestion = new ArimeticQuestion()
+            this.currentQuestion = new ArimeticQuestion(this.level)
           }
         },
         clearInput: function () {
