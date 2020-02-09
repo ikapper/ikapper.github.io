@@ -2,9 +2,10 @@
 <html>
 
 <head>
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
   <style>
-    .top>h1 {
+    h1 {
       text-align: center;
     }
 
@@ -109,8 +110,19 @@
 <body>
   <div id="app">
 
+    <h1>{{ titleHeader }}</h1>
     <div v-show="scene=='startpage'" class="top">
-      <h1>暗算タイムアタック</h1>
+
+      <el-row type="flex" justify="center">
+        <p>頭の回転が良くなる効果があるかもしれません</p>
+      </el-row>
+      <el-row type="flex" justify="center">
+        <el-radio-group v-model="level">
+          <el-radio :label="LEVEL_EASY">{{ LEVEL_EASY }}</el-radio>
+          <el-radio :label="LEVEL_NORMAL">{{ LEVEL_NORMAL }}</el-radio>
+          <el-radio :label="LEVEL_HARD">{{ LEVEL_HARD }}</el-radio>
+        </el-radio-group>
+      </el-row>
       <el-row type="flex" class="row-bg" justify="center">
         <el-button @click="startCountDown" type="primary" round>スタート！</el-button>
       </el-row>
@@ -202,6 +214,15 @@
         <p>かかった時間は、{{ currentTimeStrJp }}です。</p>
 
         <el-row type="flex" class="row-bg" justify="center">
+          <a class="twitter-share-button" :href="linkResultTweet">
+            <el-button type="primary" round>
+              <i class="fab fa-twitter fa-lg"></i> ツイート
+            </el-button>
+          </a>
+        </el-row>
+
+
+        <el-row type="flex" class="row-bg" justify="center">
           <el-button @click="backHome" type="primary" round>もう一度やる！</el-button>
         </el-row>
 
@@ -237,6 +258,9 @@
     const LEVEL_EASY = "カンタン"
     const LEVEL_NORMAL = "ふつう"
     const LEVEL_HARD = "難しい"
+    const MAX_EASY = 10
+    const MAX_NORMAL = 15
+    const MAX_HARD = 30
 
     class ArimeticQuestion {
       constructor(level) {
@@ -300,7 +324,7 @@
             }
             break
           case LEVEL_HARD:
-            digit = getRandomNumber(1, 11) < 6 ? 2 : 3
+            digit = getRandomNumber(1, 11) < 5 ? 2 : 3
             if (digit === 2) {
               return getRandomNumber(10, 100)
             } else {
@@ -348,9 +372,26 @@
         currentTime: 0,  // ms
         currentTimeTimerid: 0,
         answeredQuestions: [],
-        maxQNumber: 10,
       },
       computed: {
+        titleHeader: function () {
+          if (this.scene === "startpage") {
+            return "暗算タイムアタック"
+          } else {
+            return `暗算TA: ${this.level}`
+          }
+        },
+        maxQNumber: function () {
+          switch (this.level) {
+            case LEVEL_EASY:
+              return 5
+            case LEVEL_NORMAL:
+              return 10
+            case LEVEL_HARD:
+              return 15
+          }
+          return 10
+        },
         currentTimeStr: function () {
           let ms = Math.floor(this.currentTime % 1000 / 10)  // 上位2桁
           ms = ms < 10 ? '0' + ms : ms
@@ -401,6 +442,25 @@
               trueAnswer: q.trueAnswer
             }
           })
+        },
+        linkResultTweet: function () {
+          // https://twitter.com/intent/
+          // tweet?text=Hello%20world
+          // &url=https%3A%2F%2Fexample.com%2Ffoo
+          // &via=twitterdev
+          // &hashtags=demo
+          // &related=twitterapi%2Ctwitter
+          if (this.scene === "resultpage") {
+            let text = `難易度 ${this.level} で、${this.maxQNumber}問中${this.numCorrectAnswers}問正解しました！`
+            text += `\nクリアタイムは、${this.currentTimeStrJp}です！`
+
+            let inurl = "http://192.168.99.100:8080/calc_practice/main.html"
+
+            let url = `https://twitter.com/intent/tweet?text=${text}&url=${inurl}&via=ikapper&hashtags=暗算TA`
+            return encodeURI(url)
+          } else {
+            return "#"
+          }
         }
       },
       methods: {
