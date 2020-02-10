@@ -118,7 +118,7 @@
     <div v-show="scene=='startpage'" class="top">
 
       <el-row justify="center" class="row text-center">
-        <p>頭の体操・運動にぴったり。まずは、カンタンからどうぞ。</p>
+        <p>頭の体操・運動にぴったり。まずはカンタンからどうぞ。</p>
         <p>カンタンは、5問。</p>
         <p>ふつうは、10問。</p>
         <p>難しいは、15問。</p>
@@ -472,7 +472,16 @@
       },
       methods: {
         inputNumber: function (num) {
-          this.currentQuestion.answer += String(num)
+          const numstr = String(num)
+          if (this.currentQuestion.answer === "0") {
+            if (numstr === "0") {
+              return
+            } else {
+              this.currentQuestion.answer = numstr
+            }
+          } else {
+            this.currentQuestion.answer += String(num)
+          }
         },
         startCountDown: function () {
           this.countdownSec = COUNTDOWN_DEFAULT
