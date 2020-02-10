@@ -80,6 +80,10 @@
       transform: translate(-50%, -50%);
     }
 
+    .row {
+      padding: 10px 0;
+    }
+
     .row-bg {
       padding: 10px 0;
       background-color: #f9fafc;
@@ -113,10 +117,13 @@
     <h1>{{ titleHeader }}</h1>
     <div v-show="scene=='startpage'" class="top">
 
-      <el-row type="flex" justify="center">
-        <p>頭の回転が良くなる効果があるかもしれません</p>
+      <el-row justify="center" class="row text-center">
+        <p>頭の体操・運動にぴったり。まずは、カンタンからどうぞ。</p>
+        <p>カンタンは、5問。</p>
+        <p>ふつうは、10問。</p>
+        <p>難しいは、15問。</p>
       </el-row>
-      <el-row type="flex" justify="center">
+      <el-row type="flex" class="row" justify="center">
         <el-radio-group v-model="level">
           <el-radio :label="LEVEL_EASY">{{ LEVEL_EASY }}</el-radio>
           <el-radio :label="LEVEL_NORMAL">{{ LEVEL_NORMAL }}</el-radio>
@@ -365,7 +372,7 @@
       el: '#app',
       data: {
         scene: "startpage",
-        level: LEVEL_NORMAL,
+        level: LEVEL_EASY,
         countdownSec: COUNTDOWN_DEFAULT,
         countDownTimerid: 0,
         currentQuestion: new ArimeticQuestion(),
