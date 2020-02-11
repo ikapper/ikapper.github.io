@@ -27,6 +27,10 @@
       font-size: 2.5rem;
     }
 
+    .answer>input {
+      position: relative;
+    }
+
     .el-row {
       margin-bottom: 4px;
     }
@@ -108,6 +112,41 @@
       opacity: 0;
       height: 0;
     }
+
+    .smallswing>input {
+      animation: 0.5s linear swing;
+    }
+
+
+    @keyframes swing {
+      0% {
+        left: -10px;
+      }
+
+      16% {
+        left: 9px;
+      }
+
+      33% {
+        left: -6px;
+      }
+
+      50% {
+        left: 5px;
+      }
+
+      66% {
+        left: -2px;
+      }
+
+      83% {
+        left: 1px;
+      }
+
+      100% {
+        left: 0px;
+      }
+    }
   </style>
 </head>
 
@@ -159,7 +198,8 @@
             <div class="equals font-bold">=</div>
           </el-col>
           <el-col :span="10">
-            <el-input class="answer" placeholder="答えを入力" v-model="currentQuestion.answer"></el-input>
+            <el-input :class="['answer', {smallswing: needSwingInput}]" placeholder="答えを入力"
+              v-model="currentQuestion.answer"></el-input>
           </el-col>
         </el-row>
 
@@ -379,6 +419,7 @@
         currentTime: 0,  // ms
         currentTimeTimerid: 0,
         answeredQuestions: [],
+        needSwingInput: false
       },
       computed: {
         titleHeader: function () {
@@ -475,6 +516,11 @@
           const numstr = String(num)
           if (this.currentQuestion.answer === "0") {
             if (numstr === "0") {
+              this.needSwingInput = true
+              vm = this
+              setTimeout(() => {
+                vm.needSwingInput = false
+              }, 700);
               return
             } else {
               this.currentQuestion.answer = numstr
