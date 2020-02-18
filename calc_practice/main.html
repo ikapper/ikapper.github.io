@@ -29,6 +29,7 @@
 
     .answer>input {
       position: relative;
+      color: #606266 !important;
     }
 
     .el-row {
@@ -48,8 +49,8 @@
       font-weight: bold;
     }
 
-    .bg-purple-dark {
-      background: #99a9bf;
+    .bg-enter {
+      background: #599fff;
     }
 
     .bg-purple {
@@ -151,6 +152,9 @@
 </head>
 
 <body>
+  <noscript>
+    <strong>このページでは、Javascriptを使用しています。ご利用いただくためには、ブラウザの設定などからJavascriptを有効にしてください。</strong>
+  </noscript>
   <div id="app">
 
     <h1>{{ titleHeader }}</h1>
@@ -161,6 +165,16 @@
         <p>カンタンは、5問。</p>
         <p>ふつうは、10問。</p>
         <p>難しいは、15問。</p>
+      </el-row>
+
+      <el-divider></el-divider>
+
+      <el-row justify="center" class="row text-center">
+        <p>物理キーボードなどによる解答入力もできます。</p>
+        <p>数字キーで解答入力。</p>
+        <p><code>エンター</code>で次の問題へ。</p>
+        <p><code>バックスペース</code>で、最後の1文字を消去。</p>
+        <p><code>C</code>で入力のやり直し。</p>
       </el-row>
       <el-row type="flex" class="row" justify="center">
         <el-radio-group v-model="level">
@@ -199,7 +213,7 @@
           </el-col>
           <el-col :span="10">
             <el-input :class="['answer', {smallswing: needSwingInput}]" placeholder="答えを入力"
-              v-model="currentQuestion.answer"></el-input>
+              v-model="currentQuestion.answer" :disabled="true"></el-input>
           </el-col>
         </el-row>
 
@@ -246,7 +260,7 @@
             <div @click.stop="inputNumber(0)" class="grid-content bg-purple-light"><span>0</span></div>
           </el-col>
           <el-col :span="6">
-            <div @click.stop="nextQ" class="grid-content bg-purple-dark enter"><span>{{ nextBtnText }}</span></div>
+            <div @click.stop="nextQ" class="grid-content bg-enter enter"><span>{{ nextBtnText }}</span></div>
           </el-col>
         </el-row>
         <el-divider></el-divider>
@@ -421,6 +435,14 @@
         answeredQuestions: [],
         needSwingInput: false
       },
+      mounted: function () {
+        this.$nextTick(function () {
+          document.addEventListener("keyup", this.inputByKeyboard)
+        })
+      },
+      beforeDestroy: function () {
+        document.removeEventListener("keyup", this.inputByKeyboard)
+      },
       computed: {
         titleHeader: function () {
           if (this.scene === "startpage") {
@@ -521,12 +543,32 @@
               setTimeout(() => {
                 vm.needSwingInput = false
               }, 700);
-              return
             } else {
               this.currentQuestion.answer = numstr
             }
           } else {
             this.currentQuestion.answer += String(num)
+          }
+        },
+        inputByKeyboard: function (event) {
+          if (this.scene !== "quizpage") {
+            return
+          }
+          switch (event.key) {
+            case "Backspace":
+              const curA = this.currentQuestion.answer
+              this.currentQuestion.answer = curA.substring(0, curA.length - 1)
+              break
+            case "c":
+              this.clearInput()
+              break
+            case "Enter":
+              this.nextQ()
+              break
+          }
+          const num = Number(event.key)
+          if (num >= 0 && num < 10) {
+            this.inputNumber(num)
           }
         },
         startCountDown: function () {
