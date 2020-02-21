@@ -5,8 +5,14 @@
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
   <style>
-    h1 {
+    * {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1.head {
       text-align: center;
+      color: #333;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, .5);
     }
 
     .expression {
@@ -118,6 +124,19 @@
       animation: 0.5s linear swing;
     }
 
+    span.strong {
+      font-size: 2.4rem;
+      display: inline-block;
+      text-shadow: 0px 4px 15px rgba(196, 255, 35, 0.74);
+      transform: rotate(-4deg);
+    }
+
+    h2.strong {
+      margin: 10px 0;
+      font-size: 3.2rem;
+      text-shadow: 0px 3px 0px rgba(255, 140, 73, 0.57);
+    }
+
 
     @keyframes swing {
       0% {
@@ -155,9 +174,9 @@
   <noscript>
     <strong>このページでは、Javascriptを使用しています。ご利用いただくためには、ブラウザの設定などからJavascriptを有効にしてください。</strong>
   </noscript>
-  <div id="app">
+  <div id="app" style="display: none;">
 
-    <h1>{{ titleHeader }}</h1>
+    <h1 class="head">{{ titleHeader }}</h1>
     <div v-show="scene=='startpage'" class="top">
 
       <el-row justify="center" class="row text-center">
@@ -169,13 +188,6 @@
 
       <el-divider></el-divider>
 
-      <el-row justify="center" class="row text-center">
-        <p>物理キーボードなどによる解答入力もできます。</p>
-        <p>数字キーで解答入力。</p>
-        <p><code>エンター</code>で次の問題へ。</p>
-        <p><code>バックスペース</code>で、最後の1文字を消去。</p>
-        <p><code>C</code>で入力のやり直し。</p>
-      </el-row>
       <el-row type="flex" class="row" justify="center">
         <el-radio-group v-model="level">
           <el-radio :label="LEVEL_EASY">{{ LEVEL_EASY }}</el-radio>
@@ -185,6 +197,15 @@
       </el-row>
       <el-row type="flex" class="row-bg" justify="center">
         <el-button @click="startCountDown" type="primary" round>スタート！</el-button>
+      </el-row>
+
+      <el-row justify="center" class="row text-center">
+
+        <p>物理キーボードなどによる解答入力もできます。</p>
+        <p>数字キーで解答入力。</p>
+        <p><code>エンター</code>で次の問題へ。</p>
+        <p><code>バックスペース</code>で、最後の1文字を消去。</p>
+        <p><code>C</code>で入力のやり直し。</p>
       </el-row>
     </div>
 
@@ -270,9 +291,16 @@
 
     <transition name="fade">
       <div v-show="scene=='resultpage'">
-        <h2>採点！</h2>
-        <p>正解は、{{ numCorrectAnswers }}問でした！</p>
-        <p>かかった時間は、{{ currentTimeStrJp }}です。</p>
+        <el-row type="flex" justify="center">
+          <h2 class="strong">結果！</h2>
+        </el-row>
+        <el-row type="flex" justify="center">
+          <p>正解は、<span class="strong">{{ numCorrectAnswers }}問</span>でした！</p>
+        </el-row>
+        <el-row type="flex" justify="center">
+          <p>かかった時間は、<span class="strong">{{ currentTimeStrJp }}</span>です。</p>
+        </el-row>
+
 
         <el-row type="flex" class="row-bg" justify="center">
           <a class="twitter-share-button" :href="linkResultTweet">
@@ -402,7 +430,6 @@
 
       genNumberM() {
         //generate a number for mul
-        // TODO: levelごとに生成範囲を指定して返す
         let digit
         switch (this.level) {
           case LEVEL_EASY:
@@ -442,6 +469,7 @@
       },
       mounted: function () {
         this.$nextTick(function () {
+          document.getElementById("app").style = "display: unset;"
           document.addEventListener("keyup", this.inputByKeyboard)
         })
       },
@@ -534,7 +562,7 @@
             let text = this.resultDescription
             let inurl = String(window.location)
 
-            let url = `https://twitter.com/intent/tweet?text=${text}&url=${inurl}&via=ikapper&hashtags=暗算TA`
+            let url = `https://twitter.com/intent/tweet?text=${text}&url=${inurl}&hashtags=暗算TA`
             return encodeURI(url)
           } else {
             return "#"
