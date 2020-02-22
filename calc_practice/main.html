@@ -370,6 +370,9 @@
       }
 
       get isCorrectAnswer() {
+        if (this.answer === "") {
+          return false
+        }
         return this.trueAnswer === Number(this.answer)
       }
 
