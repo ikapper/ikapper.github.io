@@ -9,6 +9,11 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    footer {
+      margin-top: 32px;
+      margin-bottom: 12px !important;
+    }
+
     h1.head {
       text-align: center;
       color: #333;
@@ -180,6 +185,26 @@
         transform: rotate(360deg);
       }
     }
+
+    .description {
+      background-color: #f5f7fa;
+      padding: 6px;
+      border-radius: 24px;
+    }
+
+    .note {
+      background-color: #eeeff1;
+      margin: 24px 0;
+      padding: 12px;
+      border-radius: 24px;
+    }
+
+    .result {
+      background-color: #f0f9eb;
+      margin: 24px 0;
+      padding: 12px;
+      border-radius: 24px;
+    }
   </style>
 </head>
 
@@ -192,33 +217,47 @@
     <h1 class="head">{{ titleHeader }}</h1>
     <div v-show="scene=='startpage'" class="top">
 
-      <el-row justify="center" class="row text-center">
-        <p>頭の体操・運動にぴったり。まずはカンタンからどうぞ。</p>
-        <p>カンタンは、5問。</p>
-        <p>ふつうは、10問。</p>
-        <p>難しいは、15問。</p>
+      <el-row type="flex" justify="center" class="row text-center">
+        <el-col :span="20" class="description">
+          <p>頭の体操・運動にぴったり。まずはカンタンからどうぞ。</p>
+          <p>カンタンは、5問。</p>
+          <p>ふつうは、10問。</p>
+          <p>難しいは、15問。</p>
+        </el-col>
       </el-row>
 
       <el-divider></el-divider>
 
-      <el-row type="flex" class="row" justify="center">
-        <el-radio-group v-model="level">
-          <el-radio :label="LEVEL_EASY">{{ LEVEL_EASY }}</el-radio>
-          <el-radio :label="LEVEL_NORMAL">{{ LEVEL_NORMAL }}</el-radio>
-          <el-radio :label="LEVEL_HARD">{{ LEVEL_HARD }}</el-radio>
-        </el-radio-group>
+      <el-row type="flex" class="row text-center" justify="center">
+        <el-col :span="20">
+          <el-radio-group v-model="level">
+            <el-radio :label="LEVEL_EASY">{{ LEVEL_EASY }}</el-radio>
+            <el-radio :label="LEVEL_NORMAL">{{ LEVEL_NORMAL }}</el-radio>
+            <el-radio :label="LEVEL_HARD">{{ LEVEL_HARD }}</el-radio>
+          </el-radio-group>
+        </el-col>
       </el-row>
       <el-row type="flex" class="row-bg" justify="center">
         <el-button @click="startCountDown" type="primary" round>スタート！</el-button>
       </el-row>
 
-      <el-row justify="center" class="row text-center">
+      <el-row type="flex" justify="center" class="row text-center">
+        <el-col :span="18" class="note">
+          <p>物理キーボードなどによる解答入力もできます。</p>
+          <p>数字キーで解答入力。</p>
+          <p><code>エンター</code>で次の問題へ。</p>
+          <p><code>バックスペース</code>で、最後の1文字を消去。</p>
+          <p><code>C</code>で入力のやり直し。</p>
+        </el-col>
+      </el-row>
 
-        <p>物理キーボードなどによる解答入力もできます。</p>
-        <p>数字キーで解答入力。</p>
-        <p><code>エンター</code>で次の問題へ。</p>
-        <p><code>バックスペース</code>で、最後の1文字を消去。</p>
-        <p><code>C</code>で入力のやり直し。</p>
+      <p class="text-center">バグなどは、<a href=" https://twitter.com/ikapper">@ikapper </a>へご一報ください。 </p>
+
+      <el-row type="flex" justify="center" class="row text-center">
+        <el-col :span="16" class="note">
+          <p>更新履歴</p>
+          <p>v1: 公開</p>
+        </el-col>
       </el-row>
     </div>
 
@@ -308,26 +347,28 @@
           <h2 class="strong">結果！</h2>
         </el-row>
         <el-row type="flex" justify="center">
-          <p class="result-text">正解は、<span
-              :class="['strong', {rotate: scene==='resultpage'}]">{{ numCorrectAnswers }}問</span>でした！</p>
-        </el-row>
-        <el-row type="flex" justify="center">
-          <p class="result-text">かかった時間は、<span
-              :class="['strong', {rotate: scene==='resultpage'}]">{{ currentTimeStrJp }}</span>です。</p>
+          <el-col :span="20" class="result text-center">
+            <p class="result-text">正解は、<span
+                :class="['strong', {rotate: scene==='resultpage'}]">{{ numCorrectAnswers }}問</span>でした！</p>
+            <p class="result-text">かかった時間は、<span
+                :class="['strong', {rotate: scene==='resultpage'}]">{{ currentTimeStrJp }}</span>です。</p>
+          </el-col>
         </el-row>
 
 
         <el-row type="flex" class="row-bg" justify="center">
-          <a class="twitter-share-button" :href="linkResultTweet">
-            <el-button type="primary" round>
-              <i class="fab fa-twitter fa-lg"></i> ツイート
-            </el-button>
-          </a>
-          <a class="line-share-button" :href="linkResultLine">
-            <el-button type="success" round>
-              <i class="fab fa-line fa-lg"></i> LINEで送る
-            </el-button>
-          </a>
+          <el-button-group>
+            <a :href="linkResultTweet">
+              <el-button type="primary" round>
+                <i class="fab fa-twitter fa-lg"></i> ツイート
+              </el-button>
+            </a>
+            <a :href="linkResultLine">
+              <el-button type="success" round>
+                <i class="fab fa-line fa-lg"></i> LINEで送る
+              </el-button>
+            </a>
+          </el-button-group>
         </el-row>
 
 
@@ -349,6 +390,10 @@
     </transition>
 
   </div>
+
+  <footer class="jumbotron text-center">
+    <a href="/">トップページ</a>
+  </footer>
 
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
