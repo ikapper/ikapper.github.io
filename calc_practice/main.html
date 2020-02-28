@@ -187,9 +187,18 @@
     }
 
     .description {
+      position: relative;
       background-color: #d7ebff;
       padding: 6px;
       border-radius: 24px;
+    }
+
+    .description>.left-up-child {
+      position: absolute;
+      top: -12px;
+      left: 10px;
+      color: #003161;
+      font-size: 2rem;
     }
 
     .note {
@@ -220,6 +229,7 @@
 
         <el-row type="flex" justify="center" class="row text-center">
           <el-col :span="20" class="description">
+            <span class="left-up-child"><i class="fas fa-pen"></i></span>
             <p>頭の体操・運動にぴったり。まずはカンタンからどうぞ。</p>
             <p>カンタンは、5問。</p>
             <p>ふつうは、10問。</p>
