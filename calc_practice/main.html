@@ -2,8 +2,38 @@
 <html>
 
 <head>
+  <meta charset="utf-8">
+  <title>暗算タイムアタック</title>
+
+  <meta name="author" content="@ikapper">
+  <meta name="description" content="頭の体操になります。シェアすることで友達と競争できます。">
+
+  <meta property="og:title" content="暗算TA" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://ikapper.github.io/calc_practice/main.html" />
+  <meta property="og:image" content="https://ikapper.github.io/calc_practice/images/catching.jpg" />
+
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/calc_practice/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/calc_practice/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/calc_practice/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/calc_practice/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/calc_practice/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/calc_practice/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/calc_practice/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/calc_practice/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/calc_practice/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/calc_practice/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/calc_practice/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/calc_practice/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/calc_practice/icons/favicon-16x16.png">
+  <link rel="manifest" href="/calc_practice/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/calc_practice/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
   <style>
     * {
       font-family: Arial, Helvetica, sans-serif;
@@ -18,6 +48,20 @@
       text-align: center;
       color: #333;
       text-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+    }
+
+    h1.head>span {
+      position: relative;
+    }
+
+    h1.head>span::before {
+      position: absolute;
+      content: url(images/icon_calc.svg);
+      top: -5px;
+      left: -45px;
+      width: 32px;
+      height: 36px;
+      transform: rotate(25deg);
     }
 
     .expression {
@@ -203,8 +247,15 @@
 
     .note {
       background-color: #eeeff1;
-      margin: 24px 0;
-      padding: 12px;
+      margin: 18px 0;
+      padding: 8px;
+      border-radius: 24px;
+    }
+
+    .ref {
+      background-color: #d6ecff;
+      margin: 12px 0 24px;
+      padding: 8px;
       border-radius: 24px;
     }
 
@@ -223,7 +274,8 @@
   </noscript>
   <div id="app" style="display: none;">
 
-    <h1 class="head">{{ titleHeader }}</h1>
+    <h1 class="head"><span>{{ titleHeader }}</span></h1>
+
     <transition name="fade">
       <div v-show="scene=='startpage'" class="top">
 
@@ -267,7 +319,18 @@
         <el-row type="flex" justify="center" class="row text-center">
           <el-col :span="16" class="note">
             <p>更新履歴</p>
-            <p>v1: 公開</p>
+            <p>v1: 試作版</p>
+          </el-col>
+        </el-row>
+
+        <el-row type="flex" justify="center" class="row text-center">
+          <el-col :span="14" class="ref">
+            <p>フレームワーク・素材など</p>
+            <p><a href="https://vuejs.org/">Vue.js</a></p>
+            <p><a href="https://element.eleme.cn/#/en-US">Element</a></p>
+            <p><a href="https://fontawesome.com/">Font Awesome</a></p>
+            <p><a href="https://www.pakutaso.com" title="フリー写真素材ぱくたそ">フリー写真素材ぱくたそ </a><a href="https://www.pakutaso.com"
+                title="フリー写真素材ぱくたそ">フリー写真素材ぱくたそ </a></p>
           </el-col>
         </el-row>
       </div>
