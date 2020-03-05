@@ -276,7 +276,7 @@
   </noscript>
   <div id="app" style="display: none;">
 
-    <h1 class="head"><span>{{ titleHeader }}</span></h1>
+    <h1 ref="pageHeader" class="head"><span>{{ titleHeader }}</span></h1>
 
     <transition name="fade">
       <div v-show="scene=='startpage'" class="top">
@@ -323,6 +323,7 @@
             <p>更新履歴</p>
             <p>v1: 試作版</p>
             <p>v1.1: まだ試作版</p>
+            <p>v1.2: UI調整</p>
           </el-col>
         </el-row>
 
@@ -779,6 +780,15 @@
         },
         startQ: function () {
           this.scene = "quizpage"
+          const vm = this
+          setTimeout(() => {
+            const y = vm.$refs.pageHeader.getBoundingClientRect().bottom
+            window.scroll({
+              top: y,
+              left: 0,
+              behavior: "smooth"
+            })
+          }, 50);
           this.currentQuestion = new ArimeticQuestion(this.level)
           let thisapp = this
           this.currentTimeTimerid = setInterval(() => {
