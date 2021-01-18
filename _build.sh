@@ -2,7 +2,7 @@
 
 # このスクリプトを走らせればビルド可能。
 
-export JEKYLL_VERSION=3.8
+export JEKYLL_VERSION=4
 docker run --rm \
   --volume="$PWD:/srv/jekyll" \
   --volume="$PWD/vendor/bundle:/usr/local/bundle" \
