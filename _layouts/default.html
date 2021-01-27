@@ -3,6 +3,11 @@
 
 <head>
   {% include common_header.html %}
+  {% if page.stylesheet %}
+  <style>
+      {% include css/{{ page.stylesheet }}.css %}
+  </style>
+  {% endif %}
 </head>
 
 <body>
@@ -10,7 +15,11 @@
     <h1>
       {{ page.title }} - いろいろなものおき
     </h1>
+    {% if page.description %}
+    <p>{{ page.description }}</p>
+    {% else %}
     <p>ご利用の際の責任は取りかねますのでご留意ください。</p>
+    {% endif %}
   </div>
 
   <div class="container">

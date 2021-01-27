@@ -1,0 +1,54 @@
+---
+layout: default
+title: md2html
+stylesheet: md2html
+description: セーブ・ロードは確認せず行われます。データは端末に保存されます。
+---
+
+<div id="popup-msg">
+    <p></p>
+</div>
+
+<h2>md to html</h2>
+<div class="content">
+    <div class="ui">
+        <input type="checkbox" id="toPurify" name="toPurify">
+        <label for="toPurify">PURIFY</label>
+        <div class="btn-group" role="group" aria-label="interfaces">
+            <button type="button" class="btn btn-primary btn-sm" id="save-btn">Save</button>
+            <button type="button" class="btn btn-info btn-sm" id="load-btn">Load</button>
+        </div>
+    </div>
+    <div class="b">
+        <button type="button" class="btn btn-secondary btn-sm" id="dl-md">Download md file</button>
+        <button type="button" class="btn btn-success btn-sm" data-clipboard-target="#md > textarea">Copy to
+            clipboard</button>
+    </div>
+    <div class="b">
+        <button type="button" class="btn btn-secondary btn-sm" id="dl-html">Download html file</button>
+        <button type="button" class="btn btn-success btn-sm" data-clipboard-target="#html > textarea">Copy to
+            clipboard</button>
+    </div>
+    <div id="md">
+        <textarea>Please input markdown here</textarea>
+    </div>
+    <div id="html">
+        <textarea>transformed html here</textarea>
+    </div>
+</div>
+
+<footer>
+    <p>This app uses <a href="https://marked.js.org/#/README.md#README.md">Marked.js</a>, <a
+            href="https://github.com/cure53/DOMPurify">DOMPurify</a>, <a href="https://jquery.com">jQuery</a>, <a
+            href="https://clipboardjs.com/">clipboard.js</a> and <a href="https://getbootstrap.jp/">Bootstrap</a>.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.2.7/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.2.6/purify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"
+    integrity="sha512-hDWGyh+Iy4Mr9AHOzUP2+Y0iVPn/BwxxaoSleEjH/i1o4EVTF/sh0/A1Syii8PWOae+uPr+T/KHwynoebSuAhw=="
+    crossorigin="anonymous"></script>
+<script src="common.js"></script>
