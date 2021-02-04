@@ -1,4 +1,14 @@
-new ClipboardJS('.btn');
+const clipboard = new ClipboardJS('.btn');
+clipboard.on('success', function (e) {
+    showPopup("Copied!", "#5bc0de");
+    e.clearSelection();
+});
+
+clipboard.on('error', function (e) {
+    showPopup("Sorry... Failed to copy.", "#f0ad4e");
+    console.error('Action:', e.action);
+    console.error('Trigger:', e.trigger);
+});
 
 function md2html() {
     var md = $("#md > textarea");
@@ -72,5 +82,5 @@ function showPopup(msg, color) {
     elm.fadeIn();
     setTimeout(() => {
         elm.fadeOut();
-    }, 2000);
+    }, 2500);
 }
