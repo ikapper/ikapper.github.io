@@ -5,7 +5,9 @@ title: Top
 
 
 こんにちは。
-適当なものを作って置いています。
+思いついたものなどを作って置いています。不定期に更新する事があります。
+利用は自由ですが利用で生じた事象などには責任は取ることができません。
+
 
 
 <br>
@@ -16,4 +18,5 @@ title: Top
 | [計算できるかな](/calc_practice/main.html) | 暗算しよう |
 | [Fuyu](/fuyu/index.html) | 練習に作った、冬というより降雪がメインなアニメーション。電池をまあまあ食います。戻る時はブラウザバックで。<a href="http://fabricjs.com/">Fabric.js Javascript Canvas Library</a>を利用しています。|
 | [md2html](/md2html) | markdown形式をhtml形式に変換するツールです。 |
+| [背景とカラーコードをランダム表示](/bgonly) | クリックやタップごとに背景色をランダムに切り替える待機用ページです。 |
 {: .table}
