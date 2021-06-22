@@ -1,4 +1,4 @@
-# このスクリプを走らせればサーブ可能
+# このスクリプトを走らせればサーブ可能
 
 export JEKYLL_VERSION=4
 docker run --rm \
