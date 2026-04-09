@@ -20,6 +20,6 @@ title: Top
 | [背景とカラーコードをランダム表示](/bgonly) | クリックやタップごとに背景色をランダムに切り替える待機用ページです。<br>2021/07:背景画像を設定できるようにしました。 |
 | [Fuyu](/fuyu/index.html) | 練習に作った、冬というより降雪がメインなアニメーション。電池をまあまあ食います。戻る時はブラウザバックで。<a href="http://fabricjs.com/">Fabric.js Javascript Canvas Library</a>を利用しています。|
 | [計算できるかな](/calc_practice/main.html) | 暗算しよう |
-|[GBFinderのDLと使い方](/gbfinder/howtouse.html) | グラブル向けTwitter上の特定ワード検索ツール（Electron使用） |
+|<s>GBFinderのDLと使い方</s> | <s>グラブル向けTwitter上の特定ワード検索ツール（Electron使用）</s> もう使えない… |
 | [数独用シート](/dai.html)                      | 使う必要なし |
 {: .table}
